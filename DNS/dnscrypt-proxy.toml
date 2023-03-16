@@ -70,7 +70,7 @@ doh_servers = true
 require_dnssec = true
 
 # Server must not log user queries (declarative)
-require_nolog = true
+require_nolog = false
 
 # Server must not enforce its own blacklist (for parental control, ads blocking...)
 require_nofilter = false
@@ -100,7 +100,7 @@ force_tcp = false
 
 ## How long a DNS query will wait for a response, in milliseconds
 
-timeout = 3000
+timeout = 5000
 
 
 ## Keepalive for HTTP (HTTPS, HTTP/2) queries, in seconds
@@ -115,17 +115,17 @@ keepalive = 30
 
 ## Log level (0-6, default: 2 - 0 is very verbose, 6 only contains fatal errors)
 
-# log_level = 2
+log_level = 2
 
 
 ## log file for the application
 
-# log_file = 'dnscrypt-proxy.log'
+log_file = 'dnscrypt-proxy.log'
 
 
 ## Use the system logger (syslog on Unix, Event Log on Windows)
 
-# use_syslog = true
+use_syslog = true
 
 
 ## Delay, in minutes, after which certificates are reloaded
@@ -146,12 +146,13 @@ tls_disable_session_tickets = false
 
 
 ## DoH: Use a specific cipher suite instead of the server preference
-## 4867  = TLS_CHACHA20_POLY1305_SHA256
-## 4865  = TLS_AES_128_GCM_SHA256
-## 49199 = TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-## 49195 = TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+##  4867 = TLS_CHACHA20_POLY1305_SHA256
+##  4865 = TLS_AES_128_GCM_SHA256
+##
 ## 52392 = TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
 ## 52393 = TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+## 49199 = TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+## 49195 = TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 ##
 ## On non-Intel CPUs such as MIPS routers and ARM systems (Android, Raspberry Pi...),
 ## the following suite improves performance.
@@ -178,7 +179,7 @@ tls_cipher_suite = [4867, 4865, 52393, 49195, 52392, 49199]
 ## Other popular options include 8.8.8.8 and 1.1.1.1.
 
 fallback_resolver = '45.90.28.0:53'
-# fallback_resolver = '45.90.30.0:53'
+#fallback_resolver = '45.90.30.0:53'
 
 
 ## Never let dnscrypt-proxy try to use the system DNS settings;
@@ -269,7 +270,7 @@ cache = true
 
 ## Cache size
 
-cache_size = 4096
+cache_size = 32768
 
 
 ## Minimum TTL for cached entries
