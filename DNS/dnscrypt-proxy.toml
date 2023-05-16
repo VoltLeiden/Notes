@@ -100,7 +100,7 @@ force_tcp = false
 
 ## How long a DNS query will wait for a response, in milliseconds
 
-timeout = 5000
+timeout = 4000
 
 
 ## Keepalive for HTTP (HTTPS, HTTP/2) queries, in seconds
@@ -115,7 +115,7 @@ keepalive = 30
 
 ## Log level (0-6, default: 2 - 0 is very verbose, 6 only contains fatal errors)
 
-log_level = 2
+# log_level = 2
 
 
 ## log file for the application
@@ -147,13 +147,26 @@ tls_disable_session_tickets = false
 
 ## DoH: Use a specific cipher suite instead of the server preference
 ##  4867 = TLS_CHACHA20_POLY1305_SHA256
+##  4866 = TLS_AES_256_GCM_SHA384
 ##  4865 = TLS_AES_128_GCM_SHA256
+##  4869 = TLS_AES_128_CCM_8_SHA256
+##  4868 = TLS_AES_128_CCM_SHA256
 ##
-## 52392 = TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
-## 52393 = TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
-## 49199 = TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+## 52393 = TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+## 52244 = OLD_TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+## 49196 = TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 
 ## 49195 = TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+## 
+## 49327 = TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8
+## 49325 = TLS_ECDHE_ECDSA_WITH_AES_256_CCM
+## 49326 = TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8
+## 49324 = TLS_ECDHE_ECDSA_WITH_AES_128_CCM
 ##
+## 52392 = TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+## 52243 = OLD_TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+## 49200 = TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+## 49199 = TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+## 
 ## On non-Intel CPUs such as MIPS routers and ARM systems (Android, Raspberry Pi...),
 ## the following suite improves performance.
 ## This may also help on Intel CPUs running 32-bit operating systems.
@@ -161,7 +174,7 @@ tls_disable_session_tickets = false
 ## Keep tls_cipher_suite empty if you have issues fetching sources or
 ## connecting to some DoH servers. Google and Cloudflare are fine with it.
 
-tls_cipher_suite = [4867, 4865, 52393, 49195, 52392, 49199]
+tls_cipher_suite = [4867, 4866, 4865, 4869, 4868, 52393, 52244, 49196, 49195, 49327, 49325, 49326, 49324, 52392, 52243, 49200, 49199]
 
 
 ## Fallback resolver
